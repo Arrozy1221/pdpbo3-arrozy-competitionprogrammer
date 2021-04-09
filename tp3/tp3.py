@@ -35,9 +35,9 @@ label_3 = Label(form, text="Gender", width=20, font=("bold", 10))
 label_3.place(x=70, y=230)
 var = StringVar()
 ttk.Radiobutton(form, text="Male", variable=var,
-            value="Male").place(x=235, y=230)
+                value="Male").place(x=235, y=230)
 ttk.Radiobutton(form, text="Female",
-            variable=var, value="Female").place(x=300, y=230)
+                variable=var, value="Female").place(x=300, y=230)
 
 
 label_4 = Label(form, text="country", width=20, font=("bold", 10))
@@ -69,13 +69,13 @@ lb_img.pack(fill="both", expand="yes")
 
 
 def getImg():
-    # get image filename
+    # get image 
     root.filename = filedialog.askopenfilename(initialdir="~",
                                                title="Select a File",
                                                filetypes=(
                                                    ("Images", "*.jpg *.jpeg *.png"), ("all files", "*.*"))
                                                )
-    # display image preview
+    # image preview
     load = Image.open(root.filename)
     render = ImageTk.PhotoImage(load.resize((400, 200), Image.ANTIALIAS))
     lb_img.configure(image=render)
@@ -94,7 +94,7 @@ bt_openImg.pack(side=TOP, padx=10, pady=10)
 def submitObject():
     if((nama.get() == "")
        or (email.get() == "")
-       or (var.get() !="Male"  and var.get() !="Female")
+       or (var.get() != "Male" and var.get() != "Female")
        or (c.get() == "")
        or (var1.get() == "")
        or (var2.get() == "")
@@ -102,13 +102,14 @@ def submitObject():
        ):
         print("var value= "+var.get())
         messagebox.showwarning(title="Incomplete input",
-                               message="Please fill in all required fields")
-    
+                               message="Please insert all the data")
+
         pass
     else:
-        # insert new object to existing list of objects
-        data1.append(Data(nama.get(), email.get(),var.get(),c.get(),var1.get(),var2.get(), root.filename, root.image))
-        # reset the form
+        # insert new object 
+        data1.append(Data(nama.get(), email.get(), var.get(), c.get(),
+                     var1.get(), var2.get(), root.filename, root.image))
+        # reset form
         nama.set("")
         email.set("")
         c.set("")
@@ -118,6 +119,7 @@ def submitObject():
         root.image = None
         lb_img.configure(image="")
         pass
+
 
 Button(form, text='Submit', width=20, bg='brown',
        fg='black', command=submitObject).place(x=180, y=380)
@@ -131,6 +133,7 @@ lb_appName = Label(appMenu, text="Competition\nProgrammer",
 lb_appName.grid(row=0, column=0)
 lb_appName.configure(font=("Helvetica", 36, "bold"))
 
+
 def input():
     top = Toplevel()
     top.title("Submissions")
@@ -139,11 +142,11 @@ def input():
     f.pack(fill="both", expand="yes")
     # Table Header
     lb_hd_nama = Label(f, text="Nama",
-                              borderwidth=1, relief="solid")
+                       borderwidth=1, relief="solid")
     lb_hd_nama.grid(row=0, column=0, sticky="news", ipadx=5, rowspan=2)
 
     lb_hd_email = Label(f, text="Email",
-                     borderwidth=1, relief="solid")
+                        borderwidth=1, relief="solid")
     lb_hd_email.grid(row=0, column=1, sticky="news", ipadx=5, rowspan=2)
 
     lb_hd_gender = Label(f, text="Gender", borderwidth=1, relief="solid")
@@ -152,8 +155,10 @@ def input():
     lb_hd_country = Label(f, text="Country", borderwidth=1, relief="solid")
     lb_hd_country.grid(row=0, column=3, sticky="news", ipadx=5, rowspan=2)
 
-    lb_hd_progamming = Label(f, text="Progamming", borderwidth=1, relief="solid")
-    lb_hd_progamming.grid(row=0, column=4, columnspan=2, sticky="news", ipadx=5)
+    lb_hd_progamming = Label(f, text="Progamming",
+                             borderwidth=1, relief="solid")
+    lb_hd_progamming.grid(row=0, column=4, columnspan=2,
+                          sticky="news", ipadx=5)
 
     lb_hd_java = Label(f, text="Java", borderwidth=1, relief="solid")
     lb_hd_java.grid(row=1, column=4, sticky="news", ipadx=5)
@@ -205,6 +210,8 @@ def input():
 bt_see = Button(appMenu, text="SEE ALL SUBMISSIONS", command=input)
 
 bt_see.grid(row=1, column=0, sticky="new", padx=1, pady=5)
+
+
 def clearSubmissions():
     confirm = messagebox.askokcancel(
         title="Confirm Clear Submissions", message="Do you want to clear all submissions?")
@@ -228,7 +235,8 @@ def about():
     lb_title.grid(row=0, column=0, sticky="w")
     lb_desc = Label(f, text="Aplikasi ini merekam data programmer dari beberapa negara\nyang memiliki gambar untuk profile picture. Data termasuk nama,email,gender,country,bahasa pemograman  dan gambar.", anchor="w")
     lb_desc.grid(row=1, column=0, sticky="w")
-    lb_nama = Label(f, text="Nama: Arrozy Adi Falaqi\nNIM: 1908853", anchor="w")
+    lb_nama = Label(
+        f, text="Nama: Arrozy Adi Falaqi\nNIM: 1908853", anchor="w")
     lb_nama.grid(row=2, column=0, sticky="w")
 
     def exit_btn():
