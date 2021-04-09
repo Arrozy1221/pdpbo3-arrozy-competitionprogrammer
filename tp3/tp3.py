@@ -140,7 +140,7 @@ def input():
     top.focus()
     f = Frame(top)
     f.pack(fill="both", expand="yes")
-    # Table Header
+    # Table 
     lb_hd_nama = Label(f, text="Nama",
                        borderwidth=1, relief="solid")
     lb_hd_nama.grid(row=0, column=0, sticky="news", ipadx=5, rowspan=2)
